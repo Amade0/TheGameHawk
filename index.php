@@ -5,7 +5,7 @@
 </head>
 <body>
 	<?php
-		echo "php working!<br />";
+		echo 'php working!<br />';
 	?>
 	<ul>
 		<li><a href="./register.php">Register</a></li>
