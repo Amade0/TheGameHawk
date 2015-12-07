@@ -1,12 +1,26 @@
 <html>
+
 <head>
-	<title><big>The Game Hawk</big></title>
+
+	<title>The Game Hawk</title>
+
 	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+
 </head>
+
 <body>
+<h1><big><big><center><font color="#000080">The Game Hawk</font></center></big></big></h1>
+
 	<ul>
-		<p align="center"><li><a href="./register.php">Register</a></li></p>
-		<p align="center"><li><a href="./login.php">Log in</a></li></p>
+
+		<br /> <br /><br /> <br /><br />
+		<center><a href="./register.php">Register</a></center>
+		<br />
+
+		<center><a href="./login.php">Log in</a></center>
+
 	</ul>
+
 </body>
+
 <html>
