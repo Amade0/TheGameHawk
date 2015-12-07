@@ -1,4 +1,4 @@
-DROP DATABASE `TheGameHawk`;
+-- DROP DATABASE `TheGameHawk`;
 
 CREATE DATABASE `TheGameHawk`;
 
@@ -18,7 +18,7 @@ CREATE TABLE `TheGameHawk`.`Users`
 	`incomingFriendRequests` VARCHAR( 100 ),
 	`posts` VARCHAR( 200 ),
 	`pendingMessages` VARCHAR( 200 ),
-	UNIQUE (`email`),
+	UNIQUE (`emailAddress`),
 	UNIQUE (`loginName`)
 ) ENGINE = MYISAM;
 

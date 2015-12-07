@@ -3,6 +3,7 @@
 <?php
 
 session_start();
+
 if(isset($_SESSION['user'])!="")
 {
 	header("Location: home.php");
@@ -11,7 +12,6 @@ include_once 'database.php';
 
 if(isset($_POST['btn-signup']))
 {
-
 	$loginName = mysql_real_escape_string($_POST['loginName']);
 	$emailAddress = mysql_real_escape_string($_POST['emailAddress']);
 	$passwordHash = md5($_POST['password']);
@@ -22,6 +22,13 @@ if(isset($_POST['btn-signup']))
 		?>
 		<script>alert('Registration successful!');</script>
 		<?php
+		//grab the new user's info from database
+		$res = mysql_query("SELECT * FROM users WHERE loginName='$loginName'");
+		$row = mysql_fetch_array($res);
+		//start session
+		$_SESSION['user'] = $row['user_id'];
+		//redirect
+		header("Location: edit.php");
 	}
 	else
 	{
@@ -53,7 +60,7 @@ Fields marked with a * are required.
 				<td>Password*:</td><td><input type="password" name="password" placeholder="••••••••" required /></td>
 			</tr>
 			<tr>
-				<td>Display name*:</td><td><input type="text" name="displayName" placeholder="First Last" /></td>
+				<td>Display name*:</td><td><input type="text" name="displayName" placeholder="First Last" required /></td>
 			</tr>
 			<tr>
 				<td colspan=2 style="text-align:center"><button type="submit" name="btn-signup">Sign Me Up</button></td>

@@ -20,8 +20,8 @@ if(isset($_POST['btn-login']))
 	$row = mysql_fetch_array($res);
 	if($row['passwordHash'] == $upass)
 	{
-		$_SESSION['user'] = $row['user_id'];
-		header("Location: index.php");
+		$_SESSION['user'] = $row['userID'];
+		header("Location: home.php");
 	}
 	else
 	{
