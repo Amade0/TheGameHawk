@@ -11,7 +11,7 @@ include_once 'database.php';
 </head>
 
 <body>
-	<div id="login-form">
+	<div id="search-form">
 		<form method="post">
 			<table border="0">
 				<tr>
@@ -26,20 +26,8 @@ include_once 'database.php';
 
 if(isset($_POST['btn-search']))
 {
-	$name = mysql_real_escape_string($_POST['name']);
-	$res = mysql_query("SELECT * FROM users WHERE displayName='$name'");
-	$row = mysql_fetch_array($res);
-	if($row == "")
-	{
-		echo("No results");
-	}
-	else
-	{
-		$name = $row['displayName'];
-		$games = $row['gameList'];
-		$location = $row['location'];
-		echo("1: $name is in $location and owns $games");
-	}
+	$name = $_POST['name'];
+	header("Location: searchResults.php?name=$name");
 }
 
 ?>

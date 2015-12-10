@@ -12,11 +12,25 @@ include_once 'database.php';
 if(isset($_POST['btn-save']))
 {
 	$emailAddress = mysql_real_escape_string($_POST['emailAddress']);
-	$passwordHash = md5($_POST['password']);
 	$displayName = mysql_real_escape_string($_POST['displayName']);
 	$location = mysql_real_escape_string($_POST['location']);
 	$gameList = mysql_real_escape_string($_POST['gameList']);
-	mysql_query("UPDATE `users` SET `emailAddress` = '$emailAddress', `passwordHash` = '$passwordHash', `displayName` = '$displayName', `location` = '$location', `gameList` = '$gameList' WHERE `users`.`userID` = $user;");
+	$password = $_POST['password'];
+	if($password != '')
+	{
+		$passwordHash = md5($password);
+		$query = mysql_query("UPDATE `users` SET `emailAddress` = '$emailAddress', `passwordHash` = '$passwordHash', `displayName` = '$displayName', `location` = '$location', `gameList` = '$gameList' WHERE `users`.`userID` = $user;");
+	}
+	else
+	{
+		$query = mysql_query("UPDATE `users` SET `emailAddress` = '$emailAddress', `displayName` = '$displayName', `location` = '$location', `gameList` = '$gameList' WHERE `users`.`userID` = $user;");
+	}
+	if(!$query)
+	{
+		?>
+		<script>alert('An error occurred while updating your profile.');</script>
+		<?php
+	}
 }
 
 ?>
