@@ -1,15 +1,34 @@
 <?php
 
-if(!isSet($_GET['name']) || $_GET['name'] === '')
+if(isSet($_GET['name']))
 {
-	header('Location: search.php');
+	$searchName = $_GET['name'];
+}
+else
+{
+	$searchName = '';
 }
 
-$searchName = $_GET['name'];
+if(isSet($_GET['games']))
+{
+	$games = $_GET['games'];
+}
+else
+{
+	$games = '';
+}
 
-$games = $_GET['games'];
+if(isSet($_GET['location']))
+{
+	$location = $_GET['location'];
+}
+else
+{
+	$location = '';
+}
 
 include_once 'database.php';
+include_once 'head.php';
 
 ?>
 
@@ -25,9 +44,15 @@ include_once 'database.php';
 <?php
 	$searchName = mysql_real_escape_string($searchName);
 	$games = mysql_real_escape_string($games);
-	$results = mysql_query("SELECT * FROM users WHERE displayName LIKE '%$searchName%' AND gameList LIKE '%$games%'");
+	$location = mysql_real_escape_string($location);
+	if($searchName == '' && $games == '' && $location == '')
+	{
+		//no specifications, send back to search form
+		header('Location: search.php');
+	}
+	$results = mysql_query("SELECT * FROM users WHERE displayName LIKE '%$searchName%' AND gameList LIKE '%$games%' AND location LIKE '%$location%'");
 	$i = 0;
-	while($row = mysql_fetch_assoc($results))
+	while($i < 50 && $row = mysql_fetch_assoc($results))
 	{
 		$i++;
 		$loginName = $row['loginName'];
@@ -37,14 +62,17 @@ include_once 'database.php';
 		$link = "./profile.php?user=$loginName";
 		echo("<li><a href=\"$link\">$name</a> is in $location and owns $games</li>");
 	}
+	echo('</ol>');
 	if($i == 0)
 	{
-		echo('No results.');
+		echo('No results.<br />');
+	}
+	else if($i == 50)
+	{
+		echo('More than 50 results for this search. Only the first 50 are displayed.<br />');
 	}
 ?>
-</ol>
 <a href="./search.php">Search again</a><br />
-<a href="./home.php">Return to home</a><br />
 
 </body>
 </html>

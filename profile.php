@@ -1,14 +1,29 @@
 <?php
 
+include_once 'database.php';
+include_once 'head.php';
+
+//session_start();
+
 if(!isSet($_GET['user']) || $_GET['user'] === '')
 {
-	header('Location: home.php');
+	if(isset($_SESSION['user']) != "")
+	{
+		$user = $_SESSION['user'];
+		$user = mysql_query("SELECT * FROM users WHERE userID='$user'");
+	}
+	else
+	{
+		header('Location: index.php');
+	}
+}
+else
+{
+	$user = mysql_real_escape_string($_GET['user']);
+	$user = mysql_query("SELECT * FROM users WHERE loginName = '$user';");
 }
 
-include_once 'database.php';
 
-$user = mysql_real_escape_string($_GET['user']);
-$user = mysql_query("SELECT * FROM users WHERE loginName = '$user';");
 $user = mysql_fetch_array($user);
 
 ?>

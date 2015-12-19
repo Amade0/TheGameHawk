@@ -1,13 +1,15 @@
 <?php
-session_start();
+
+include_once 'head.php';
 
 if(isset($_SESSION['user']) == "")
 {
 	header("Location: index.php");
 }
 
-$user = $_SESSION['user'];
 include_once 'database.php';
+
+$user = $_SESSION['user'];
 
 ?>
 
@@ -19,7 +21,6 @@ include_once 'database.php';
 
 <body>
 	<a href="./edit.php">Edit account</a><br />
-	<a href="./search.php">Search</a><br />
-	<a href="./logout.php">Log out</a>
+	<a href="./search.php">Search</a>
 </body>
 <html>

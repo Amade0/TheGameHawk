@@ -10,7 +10,7 @@ include_once 'database.php';
 
 if(isset($_SESSION['user']) != "")
 {
-	header("Location: index.php");
+	header("Location: home.php");
 }
 if(isset($_POST['btn-login']))
 {
