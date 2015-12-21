@@ -63,7 +63,7 @@ Fields marked with a * are required.
 				<td>Display name*:</td><td><input type="text" name="displayName" placeholder="First Last" required /></td>
 			</tr>
 			<tr>
-				<td colspan=2 style="text-align:center"><button type="submit" name="btn-signup">Sign Me Up</button></td>
+				<td colspan=2 style="text-align:center"><button type="submit" name="btn-signup">Register</button></td>
 			</tr>
 		</table>
 	</form>

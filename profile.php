@@ -2,7 +2,9 @@
 
 include_once 'database.php';
 include_once 'head.php';
+include_once 'platform_functions.php';
 
+//started in head.php
 //session_start();
 
 if(!isSet($_GET['user']) || $_GET['user'] === '')
@@ -40,6 +42,7 @@ $user = mysql_fetch_array($user);
 
 <ul>
 	<li>Location: <?php echo($user['location']); ?></li>
+	<li>Platforms: <?php echo(decode_platformList($user['platformList'])); ?></li>
 	<li>Games: <?php echo($user['gameList']); ?></li>
 </ul>
 

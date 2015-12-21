@@ -27,8 +27,9 @@ else
 	$location = '';
 }
 
-include_once 'database.php';
 include_once 'head.php';
+include_once 'database.php';
+include_once 'platform_functions.php';
 
 ?>
 
@@ -58,9 +59,10 @@ include_once 'head.php';
 		$loginName = $row['loginName'];
 		$name = $row['displayName'];
 		$games = $row['gameList'];	
+		$platformList = decode_platformList($row['platformList']);
 		$location = $row['location'];
 		$link = "./profile.php?user=$loginName";
-		echo("<li><a href=\"$link\">$name</a> is in $location and owns $games</li>");
+		echo("<li><a href=\"$link\">$name</a> is in $location, plays $games, and owns these platforms: $platformList</li>");
 	}
 	echo('</ol>');
 	if($i == 0)
