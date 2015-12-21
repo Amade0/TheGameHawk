@@ -28,7 +28,7 @@ else
 }
 
 include_once 'head.php';
-include_once 'database.php';
+//include_once 'database.php';
 include_once 'platform_functions.php';
 
 ?>

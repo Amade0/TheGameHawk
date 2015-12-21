@@ -21,11 +21,3 @@ CREATE TABLE `TheGameHawk`.`Users`
 	UNIQUE (`emailAddress`),
 	UNIQUE (`loginName`)
 ) ENGINE = MYISAM;
-
-CREATE TABLE `TheGameHawk`.`Games`
-(
-	`gameID` INT( 5 ) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	`title` VARCHAR( 50 ) NOT NULL,
-	`platform` INT( 5 ) NOT NULL,
-	`genre` VARCHAR( 50 ) NOT NULL
-) ENGINE = MYISAM;

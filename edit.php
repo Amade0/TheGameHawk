@@ -2,13 +2,13 @@
 //session_start();
 include_once 'head.php';
 
-if(isset($_SESSION['user']) == "")
+if(isset($_SESSION['user']) == '')
 {
 	header("Location: index.php");
 }
 
 $user = $_SESSION['user'];
-include_once 'database.php';
+//include_once 'database.php';
 include_once 'platform_functions.php';
 
 if(isset($_POST['btn-save']))

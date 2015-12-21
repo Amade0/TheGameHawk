@@ -7,7 +7,7 @@ if(isset($_SESSION['user']) == "")
 	header("Location: index.php");
 }
 
-include_once 'database.php';
+//include_once 'database.php';
 
 $user = $_SESSION['user'];
 
