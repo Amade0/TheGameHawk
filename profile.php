@@ -76,7 +76,7 @@ if(isset($_POST['btn-friend']))
 
 <h1><?php echo($user['displayName']) ?>'s profile</h1>
 <?php
-	if(isset($viewer) && $viewer['userID'] !== $user['userID'])
+	if(isset($viewer) && $viewer['userID'] != $user['userID'])
 	{
 		//check if these users are friends
 		$friended = false;
@@ -166,6 +166,14 @@ if(isset($_POST['btn-friend']))
 	<li>Platforms: <?php echo(decode_platformList($user['platformList'])); ?></li>
 	<li>Games: <?php echo($user['gameList']); ?></li>
 </ul>
+
+<?php
+if(isset($viewer) && $viewer['userID'] != $user['userID'] && $friended)
+{
+	$loginName = $user['loginName'];
+	echo("<a href=\"message.php?user=$loginName\">Send message</a><br />");
+}
+?>
 
 <a href="./home.php">Return to home</a><br />
 

@@ -45,8 +45,6 @@ if(isset($_POST['btn-save']))
 </head>
 
 <body>
-
-
 <div id="edit-form">
 	<form method="post">
 		<table border="0">

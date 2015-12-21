@@ -25,10 +25,8 @@ else
 	//... and messages
 	if($user['pendingMessages'])
 	{
-		echo(' // <a href="./message.php">Unread message(s)</a>');
+		echo(' // <a href="./messages.php">Unread message(s)</a>');
 	}
-	//just in case?
-	//unset($user);
 }
 
 ?>
